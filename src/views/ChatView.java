@@ -209,7 +209,7 @@ public class ChatView extends javax.swing.JFrame {
      public void displayChatList() throws RemoteException {
         chatList.setText("");
         msgs = chat.getAllMessages();
-        String doc = ">>> |";
+        String doc = ">>> ";
         for (Message m : msgs) {
             if (!((m.getUsername().equals(username)) && (m.getType().equals("juntar")))) {             
                 String existMensagem = null;
@@ -224,8 +224,8 @@ public class ChatView extends javax.swing.JFrame {
                 try {
                     Date time = parseFormat.parse(a);
                     if (existMensagem == null) {                        
-                        doc += " "+ printFormat.format(time)+"\t"
-                                + m.getUsername()+ "\t"
+                        doc += " ["+ printFormat.format(time)+"]\t "
+                                + m.getUsername()+ " -> \t "
                                 + m.getMsg()+"\n";
 
                    }
@@ -234,7 +234,7 @@ public class ChatView extends javax.swing.JFrame {
                 }                        
             }
         }
-        doc += ">>>";
+        doc += "\n >>>";
         chatList.setText(doc);
     }
     
